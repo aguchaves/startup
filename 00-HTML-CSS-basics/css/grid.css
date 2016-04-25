@@ -1,0 +1,93 @@
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* Small screens (default) */
+html { font-size: 100%; }
+
+/* Medium screens (640px) */
+@media (min-width: 40rem) { 
+  html { font-size: 112%; }
+}
+
+/* Large screens (1024px) */
+@media (min-width: 64rem) { 
+  html { font-size: 120%; }
+}
+@media all and (max-width: 699px) and (min-width: 520px), (min-width: 1151px) {
+  .navigation ul li a {
+    padding-left: 65px;
+    background: url("http://i.ebayimg.com/images/g/enEAAOSwwbdWOhPe/s-l64.jpg") left center no-repeat;
+    font-size: 46px;
+  }
+    .content p {
+        font-size: 30px;
+    }
+}
+.container {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    display:table;
+    overflow: hidden;
+}
+@media (min-width: 40rem) {
+    .column {
+        float: left;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        position: relative;
+        } 
+
+    .column.full { width: 100%; 
+        }
+    .column.two-thirds { width: 66.7%; 
+        }
+    .column.half { width: 50%; 
+        }
+    .column.third { width: 33.3%; 
+        }
+    .column.fourth { width: 25%; 
+        }
+    .column.flow-opposite { float: right; 
+        }  
+}
+ @media only screen and (max-width: 768px) {
+  aside.sidebar {
+    display: none;
+  }
+  .content {
+    margin-right: 0;
+  }
+}
+
+img{
+    width: 100%;
+    height: 300px;
+}
+span.text {
+      background-color: rgba(42, 8, 8, 0.5);
+      color: white;
+      cursor: pointer;
+      display: block;
+      height: 300px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 90%;
+      opacity: 0;
+    text-align: center;
+    padding: 15px;
+    margin-left: 5%;
+}
+span.text span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.column.half:hover span.text {
+  opacity: 1;
+}
+
