@@ -1,0 +1,14 @@
+<h2>Movie Data</h2>
+<form ng-model="movie">
+    <label for="movieName">Name: </label>
+    <input id="movieName" type="text" placeholder="Movie Name" ng-model="movie.name"><br>
+    <label for="movieYear">Year: </label>
+    <input id="movieYear" type="number" placeholder="Realese Date" ng-model="movie.year"><br>
+    <label for="movieDirector">Director: </label>
+    <input id="movieDirector" type="text" placeholder="Director's Name" ng-model="movie.director"><br>
+    <label for="movieGenre">Genre: </label>
+    <input id="movieGenre" type="text" placeholder="Movie Genre" ng-model="movie.genre"><br>
+    <label for="movieSinopsis">Sinopsis: </label>
+    <textarea id="movieSinopsis" placeholder="Short sinopsis here..." ng-model="movie.sinopsis"></textarea>
+</form>
+<button type="button" ng-click="saveMovie()" href="">Save</button>
