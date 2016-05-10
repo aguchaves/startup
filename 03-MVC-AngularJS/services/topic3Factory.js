@@ -103,7 +103,7 @@ topic3App.factory('topic3Factory', ['store', function(store){
         saveEdition : function (movie){
             that.saveEdition(movie);
             that.saveArray();
-    }
+        }
     }
     
 }]);

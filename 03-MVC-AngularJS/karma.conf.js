@@ -25,9 +25,9 @@ module.exports = function(config) {
         'bower_components/a0-angular-storage/dist/angular-storage.js',
         'bower_components/angular-ui-router/release/angular-ui-router.js',
         'topic3App.js',
-        'tests/*.js',
         'services/topic3Factory.js',
-        'controllers/*.js'
+        'controllers/*.js',
+         'tests/*.js',
         
     ],
 
