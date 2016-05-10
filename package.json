@@ -1,0 +1,36 @@
+{
+  "name": "startup",
+  "version": "1.0.0",
+  "description": "empty",
+  "main": "index.js",
+  "dependencies": {
+    "babel-cli": "^6.7.7",
+    "browserify": "^13.0.0",
+    "chalk": "^1.1.3",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^2.0.0-alpha",
+    "gulp-uglify": "^1.5.3",
+    "gulp-util": "^3.0.7",
+    "gulp-watchify": "^0.6.0",
+    "utils-merge": "^1.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.7.7",
+    "babelify": "^7.3.0"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aguchaves/startup.git"
+  },
+  "author": "aguchaves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aguchaves/startup/issues"
+  },
+  "homepage": "https://github.com/aguchaves/startup#readme"
+}
