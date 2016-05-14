@@ -16,21 +16,29 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.router'
+    'ui.router',
+    'angular-storage'
   ])
   .config(function($stateProvider, $urlRouterProvider) {
   //
   // For any unmatched url, redirect to /state1
-  $urlRouterProvider.otherwise("/main");
+  $urlRouterProvider.otherwise("/login");
   //
   // Now set up the states
   $stateProvider
-    .state('main', {
-      url: "/main",
-      templateUrl: "../views/main.html"
+    .state('login', {
+      url: "/login",
+      templateUrl: "../views/login.html",
+      controller: 'LoginCtrl'
     })
     .state('about', {
       url: "/about",
-      templateUrl: "../views/about.html"
+      templateUrl: "../views/about.html",
+      controller: 'AboutCtrl'
+    })
+    .state('playlist', {
+      url: "/playlist",
+      templateUrl: "../views/playlist.html",
+      controller: 'PlaylistCtrl'
     });
 });
