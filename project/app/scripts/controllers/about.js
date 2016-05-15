@@ -8,13 +8,16 @@
  * Controller of the bootcampAppApp
  */
 angular.module('bootcampApp')
-  .controller('AboutCtrl', ['spotifyFactory','$scope', '$state', function (spotifyFactory, $scope, $state) {
+  .controller('AboutCtrl', ['spotifyFactory','$scope',
+              '$state', function (spotifyFactory, $scope, $state) {
 
       $scope.UserInfo = {};
       $scope.userPlaylist = [];
+
       spotifyFactory.getUserInfo().then(function(data){
           $scope.UserInfo = data;
-          spotifyFactory.getUserPlaylists($scope.UserInfo.id).then(function(data){
+          spotifyFactory.getUserPlaylists($scope.UserInfo.id)
+            .then(function(data){
               data.items.forEach(function(playlist){
                 if($scope.UserInfo.id === playlist.owner.id){
                   $scope.userPlaylist.push(playlist);

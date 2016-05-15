@@ -1,6 +1,66 @@
-<h1>{{ currentPlaylist.name }}</h1>
+<div class="row">
 
-<ul>
-  <li ng-repeat= "track in playlistsTracks">{{track.name}} -
-    {{track.album.name}} - {{track.artists[0].name}}</li>
-</ul>
+    <div class="col-xs-12 col-lg-6">
+        <img class="playlistCover"
+        ng-src= "{{currentPlaylist.images[0].url}}"></img><br>
+    </div>
+
+    <div class="col-xs-12 col-lg-6">
+
+      <div class="playlistData">
+
+        <h1>{{ currentPlaylist.name }}</h1>
+        <h3>Add tracks:</h3>
+        <input class="" type="text" placeholder="Search..."
+                ng-model="query" ng-change="searchQuery()"/>
+
+        <div class="trackSearch">
+            <ul>
+              <li ng-repeat="track in search"
+                  ng-click="addSelectedTrack(track)">
+                 {{ track.name }} - {{ track.artists[0].name }}</li>
+            </ul>
+        </div>
+
+      </div>
+    </div>
+
+</div>
+<div class="row">
+  <div class="col-lg-12 col-xs-12">
+    <div class="playlistTracks">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>
+                  CANCIÓN
+                </th>
+                <th class="artistPL">
+                  ARTISTA
+                </th>
+                <th class="albumPL">
+                  ÁLBUM
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat= "track in currentPlaylist.tracks">
+                <td>
+                  {{ track.name }}
+                </td>
+                <td class="artistPL">
+                  {{ track.artists[0].name }}
+                </td>
+                <td class="albumPL">
+                  {{ track.album.name }}
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        <div class="saveButton">
+          <button type="button" name="newPlaylist" class="btn btn-success"
+           ng-click="saveNewPlaylist()">  Save! <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
+    </div>
+  </div>
+</div>

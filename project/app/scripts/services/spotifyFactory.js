@@ -32,7 +32,6 @@ bootcampApp
 
       this.setAuthToken = function (authToken) {
         this.authToken = authToken;
-        console.log(this.authToken);
         store.set('authToken', authToken);
         return this.authToken;
       };
@@ -42,11 +41,6 @@ bootcampApp
           this.authToken = store.get('authToken');
           return this.authToken;
         }
-      };
-
-      this.setUserData = function (data) {
-        this.userData = data;
-        store.set('userData', data)
       };
 
       this.setRedirectUri = function (redirectUri) {
@@ -68,7 +62,6 @@ bootcampApp
       this.spoty = function (endURL, method, parameters, data, headers){
 
           var promi = $q.defer();
-          console.log(this.authToken);
           $http({
               url : this.spotyURL + endURL,
               method : method ? method : 'GET',
@@ -99,8 +92,8 @@ bootcampApp
             return this.spoty('/users/' + userId + '/playlists', 'GET', null, null, this.spotyAuth());
           };
 
-      this.getPlaylist = function (userId, playlistId, options) {
-            return this.spoty('/users/' + userId + '/playlists/' + playlistId, 'GET', options, null, this.spotyAuth());
+      this.getPlaylist = function (userId, playlistId) {
+            return this.spoty('/users/' + userId + '/playlists/' + playlistId, 'GET', null, null, this.spotyAuth());
           };
 
       this.getPlaylistTracks = function (userId, playlistId) {
@@ -121,15 +114,48 @@ bootcampApp
             return this.spoty('/me', 'GET', null, null, this.spotyAuth());
       };
 
+      this.setUserData = function (data) {
+        this.userData = data;
+        store.set('userData', data)
+      };
+
       this.setCurrentPlaylist = function(playlist){
-            this.currentPlaylist = playlist;
             store.set('playList', playlist);
+            this.currentPlaylist = playlist;
       };
 
       this.getCurrentPlaylist = function(){
           var playListStored = store.get('playList');
           return playListStored;
-      }
+      };
+
+      this.addTrackInCurrentPlaylist = function (track) {
+          this.getCurrentPlaylist().tracks.push(track);
+      };
+
+      this.savePlaylist = function(userId, playlistId, tracks){
+          var tracksToBeSaved = [];
+          tracks.forEach(function(track){
+              tracksToBeSaved.push(track);
+          }, tracksToBeSaved);
+          if(tracksToBeSaved){
+              tracksToBeSaved.forEach(function(track, index){
+                tracksToBeSaved[index] = 'spotify:track:' + track.id;
+              });
+          }
+
+      return this.callAPI('/users/' + userId + '/playlists/'+ playlistId + '/tracks', 'PUT', {
+        uris: tracksToBeSaved.toString(),
+        position: null
+      }, null, this.getAuthHeaders(true));
+    }
+
+      this.searchQuery = function(query, type){
+          var options = {};
+          options.q = query;
+          options.type = type;
+          return this.spoty('/search', 'GET', options);
+      };
 
     return {
 
@@ -195,6 +221,14 @@ bootcampApp
 
         getCurrentPlaylist : function (){
             return that.getCurrentPlaylist();
+        },
+
+        addTrackInCurrentPlaylist : function (track) {
+            return that.addTrackInCurrentPlaylist(track);
+        },
+
+        searchQuery : function (query, track){
+            return that.searchQuery(query, track);
         }
 
     };

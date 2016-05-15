@@ -1,16 +1,41 @@
-<h1> Hello, {{UserInfo.display_name}}!!</h1><br>
-
-<img ng-src= "{{UserInfo.images[0].url}}" ></img><br>
-
-<p>{{UserInfo.email}}</p><br>
-<p>Followers: {{UserInfo.followers.total}}</p><br>
-<div class="userPlaylists">
-  <ul>
-    <li ng-repeat= "playlist in userPlaylist">
-      {{ playlist.name }}
-        <button type="button" name="button"
-        ng-click="enterPlaylist(playlist)">+</button>
-    </li>
-
-  </ul>
+<div class="usrData">
+  <div class="row">
+    <div class="col-xs-12 col-lg-6">
+      <div class="usrPic">
+        <img ng-src= "{{UserInfo.images[0].url}}" class="img-rounded"></img><br>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-6">
+      <h1> Hello, {{UserInfo.display_name}}!!</h1>
+      <h3>{{UserInfo.email}}</h3>
+      <p>Followers: {{UserInfo.followers.total}}</p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="userPlaylist col-lg-12 col-xs-12">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>
+                  PLAYLIST
+                </th>
+                <th class="editPL">
+                  EDIT
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat= "playlist in userPlaylist">
+                <td>
+                  {{ playlist.name }}
+                </td>
+                <td class="editPL">
+                  <button class="btn btn-success" type="button" name="button"
+                  ng-click="enterPlaylist(playlist)">+</button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+  </div>
 </div>

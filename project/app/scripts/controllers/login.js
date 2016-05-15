@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * @ngdoc function
  * @name bootcampAppApp.controller:LoginCtrl
@@ -18,6 +17,4 @@ angular.module('bootcampApp')
         });
       $state.go('about');
     };
-
-
-  }]);
+}]);
