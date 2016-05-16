@@ -133,6 +133,10 @@ bootcampApp
           this.getCurrentPlaylist().tracks.push(track);
       };
 
+      this.createNewPlaylist= function (userId, options) {
+            return this.spoty('/users/' + userId + '/playlists', 'POST', null, options, this.spotyAuth(true));
+      };
+
       this.savePlaylist = function(userId, playlistId, tracks){
           var tracksToBeSaved = [];
           tracks.forEach(function(track){
@@ -144,10 +148,10 @@ bootcampApp
               });
           }
 
-      return this.callAPI('/users/' + userId + '/playlists/'+ playlistId + '/tracks', 'PUT', {
+      return this.spoty('/users/' + userId + '/playlists/'+ playlistId + '/tracks', 'PUT', {
         uris: tracksToBeSaved.toString(),
         position: null
-      }, null, this.getAuthHeaders(true));
+      }, null, this.spotyAuth(true));
     }
 
       this.searchQuery = function(query, type){
@@ -229,6 +233,14 @@ bootcampApp
 
         searchQuery : function (query, track){
             return that.searchQuery(query, track);
+        },
+
+        createNewPlaylist : function (userId, options){
+            return that.createNewPlaylist(userId, options);
+        },
+
+        savePlaylist : function (userId, playlistId, tracks) {
+            return that.savePlaylist(userId, playlistId, tracks);
         }
 
     };

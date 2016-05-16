@@ -54,5 +54,7 @@ angular.module('bootcampApp')
 
       $scope.saveNewPlaylist = function (){
         spotifyFactory.savePlaylist($scope.UserInfo.id, $scope.currentPlaylist.id, $scope.currentPlaylist.tracks);
+        $state.go('playlist');
+        $scope.search = [];
       };
   }]);

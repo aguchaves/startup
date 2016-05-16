@@ -31,4 +31,8 @@ angular.module('bootcampApp')
         spotifyFactory.setCurrentPlaylist(playlist);
         $state.go("playlist");
       };
+
+      $scope.newplaylist = function(){
+        $state.go('newPL');
+      }
   }]);

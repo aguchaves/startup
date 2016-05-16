@@ -40,5 +40,10 @@ angular
       url: "/playlist",
       templateUrl: "../views/playlist.html",
       controller: 'PlaylistCtrl'
+    })
+    .state('newPL', {
+      url: "/new",
+      templateUrl: "../views/newplaylist.html",
+      controller: 'NewplaylistCtrl'
     });
 });

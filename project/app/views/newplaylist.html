@@ -1,32 +1,18 @@
-<div class="row">
+<h1>New Playlist</h1>
 
-    <div class="col-xs-12 col-lg-3">
-      <div class="coverContainer">
-        <img class="playlistCover"
-        ng-src= "{{currentPlaylist.images[0].url}}"></img><br>
-      </div>
-    </div>
+<h3>Choose a name for your new playlist: </h3>
+<input type="text" ng-model="newPLName" name="newPLName" value="" placeholder="My Playlist Name..">
 
-    <div class="col-xs-12 col-lg-9">
+<h3>Add tracks:</h3>
+<input class="" type="text" placeholder="Search..."
+        ng-model="query" ng-change="searchQuery()"/>
 
-      <div class="playlistData">
-
-        <h1><i class="fa fa-music" aria-hidden="true"></i>  {{ currentPlaylist.name }}</h1>
-        <h3>Add tracks:</h3>
-        <input class="" type="text" placeholder="Search..."
-                ng-model="query" ng-change="searchQuery()"/>
-
-        <div class="trackSearch">
-            <ul>
-              <li ng-repeat="track in search"
+<div class="trackSearch">
+    <ul>
+      <li ng-repeat="track in search"
                   ng-click="addSelectedTrack(track)">
                  {{ track.name }} - {{ track.artists[0].name }}</li>
-            </ul>
-        </div>
-
-      </div>
-    </div>
-
+    </ul>
 </div>
 <div class="row">
   <div class="col-lg-12 col-xs-12">

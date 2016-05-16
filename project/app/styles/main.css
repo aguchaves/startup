@@ -11,17 +11,18 @@ body {
   font-family: 'proxima_nova','Helvetica Neue',Helvetica,Arial,sans-serif;
   color: white;
 }
-.container {
-  
-}
 
 .userPlaylist {
   width: 80%;
 }
 
 .playlistCover {
-  height: 250px;
-  width: 250px;
+  height: 200px;
+  width: 200px;
+}
+
+.coverContainer {
+  text-align: center;
 }
 
 .playlistTracks {
@@ -31,6 +32,10 @@ body {
 .playlistData{
   text-align: left;
   color: #21D05F;
+}
+
+.newPL {
+  margin-top: 40px;
 }
 
 .editPL {
@@ -51,6 +56,7 @@ body {
   width: auto;
   height: auto;
   margin-left: 40px;
+  margin-top: 20px;
 }
 
 .saveButton {

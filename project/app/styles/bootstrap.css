@@ -1128,8 +1128,8 @@ img {
 }
 .img-rounded {
   border-radius: 100px;
-  width: 200px;
-  height: 200px;
+  width: 125px;
+  height: 125px;
 }
 .img-thumbnail {
   display: inline-block;

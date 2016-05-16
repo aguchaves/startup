@@ -1,6 +1,6 @@
 <div class="usrData">
   <div class="row">
-    <div class="col-xs-12 col-lg-6">
+    <div class="col-xs-12 col-lg-3">
       <div class="usrPic">
         <img ng-src= "{{UserInfo.images[0].url}}" class="img-rounded"></img><br>
       </div>
@@ -10,6 +10,9 @@
       <h3>{{UserInfo.email}}</h3>
       <p>Followers: {{UserInfo.followers.total}}</p>
     </div>
+      <div class="newPL col-xs-12 col-lg-3">
+          <button type="button" class="btn btn-success" name="newplaylist" ng-click="newplaylist()"><i class="fa fa-plus" aria-hidden="true"></i> New Playlist</button>
+      </div>
   </div>
 </div>
 <div class="row">
@@ -32,7 +35,7 @@
                 </td>
                 <td class="editPL">
                   <button class="btn btn-success" type="button" name="button"
-                  ng-click="enterPlaylist(playlist)">+</button>
+                  ng-click="enterPlaylist(playlist)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
                 </td>
               </tr>
             </tbody>
