@@ -155,7 +155,7 @@ bootcampApp
     }
 
       this.searchQuery = function(query, type){
-          var options = {};
+          var options = { limit: 7 };
           options.q = query;
           options.type = type;
           return this.spoty('/search', 'GET', options);

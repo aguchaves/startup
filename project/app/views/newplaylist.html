@@ -1,19 +1,31 @@
-<h1>New Playlist</h1>
+<div class="row">
+  <div class="col-xs-12 col-lg-6 newPLName">
+    <h4>Choose a name for your playlist: </h4>
+    <div class="">
+        <input class="query" type="text" ng-model="newPLName" name="newPLName" value="" placeholder="My Playlist Name..">
+    </div>
+    <div class="addTracks">
+      <h5>Add tracks:</h5>
+      <input class="query" type="text" placeholder="Search..."
+              ng-model="query" ng-change="searchQuery()"/>
+    </div>
+    <div class="trackSearch">
+      <table class="table table-striped table-hover">
+        <tr ng-repeat="track in search"
+            ng-click="addSelectedTrack(track)">
+          <td>
+            {{ track.name }} - {{ track.artists[0].name }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-xs-12 col-lg-6 currentPL newPLName">
+    <p>{{ newPLName }}</p>
+  </div>
 
-<h3>Choose a name for your new playlist: </h3>
-<input type="text" ng-model="newPLName" name="newPLName" value="" placeholder="My Playlist Name..">
-
-<h3>Add tracks:</h3>
-<input class="" type="text" placeholder="Search..."
-        ng-model="query" ng-change="searchQuery()"/>
-
-<div class="trackSearch">
-    <ul>
-      <li ng-repeat="track in search"
-                  ng-click="addSelectedTrack(track)">
-                 {{ track.name }} - {{ track.artists[0].name }}</li>
-    </ul>
 </div>
+
 <div class="row">
   <div class="col-lg-12 col-xs-12">
     <div class="playlistTracks">
@@ -21,13 +33,13 @@
             <thead>
               <tr>
                 <th>
-                  CANCIÓN
+                  SONG
                 </th>
                 <th class="artistPL">
-                  ARTISTA
+                  ARTIST
                 </th>
                 <th class="albumPL">
-                  ÁLBUM
+                  ALBUM
                 </th>
               </tr>
             </thead>

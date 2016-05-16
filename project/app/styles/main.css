@@ -8,12 +8,37 @@
 body {
   padding: 0;
   background-color: #121314;
-  font-family: 'proxima_nova','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-family: 'Montserrat', sans-serif;
   color: white;
 }
 
+.usrData {
+  margin-bottom: 15px;
+}
 .userPlaylist {
-  width: 80%;
+  width: 600px;
+}
+
+.currentPL, .lenght {
+  margin-top: -10px;
+  color: #23CF5F;
+}
+
+.newPLName {
+  text-align: center;
+}
+
+.addTracks {
+  margin-top: 20px;
+}
+
+.currentPL {
+    font-size: 55px;
+}
+
+.query {
+  width: 350px;
+  color: #121314;
 }
 
 .playlistCover {
@@ -29,9 +54,8 @@ body {
   margin-top: 20px;
 }
 
-.playlistData{
+.playlistData, .plName{
   text-align: left;
-  color: #21D05F;
 }
 
 .newPL {
@@ -42,12 +66,7 @@ body {
   text-align: right;
 }
 
-.albumPL {
-  text-align: left;
-  width: 33%;
-}
-
-.artistPL {
+.artistPL, .songPL, .albumPL {
   text-align: left;
   width: 33%;
 }
@@ -57,6 +76,17 @@ body {
   height: auto;
   margin-left: 40px;
   margin-top: 20px;
+}
+
+.trackSearch {
+  width: 350px;
+  font-size: 12px;
+  background-color: #191919;
+  color: #ccc;
+  text-align: center;
+  position: relative;
+  align-content: center;
+  margin-left: 80px;
 }
 
 .saveButton {
@@ -82,6 +112,8 @@ body {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
 }
+
+
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
@@ -95,6 +127,7 @@ body {
   padding-top: 19px;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  margin-bottom: -100px;
 }
 
 .container-narrow > hr {
@@ -105,6 +138,7 @@ body {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+  background-color: #191919;
 }
 .jumbotron .btn {
   font-size: 21px;
@@ -143,7 +177,11 @@ body {
 }
 
 @media screen and (max-width: 760px) {
-  .usrPic, .usrData{
+  .usrPic, .usrData, .playlistData, .row, .trackSearch{
     text-align: center;
+  }
+
+  p {
+    font-size: 8px;
   }
 }

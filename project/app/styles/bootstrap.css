@@ -5,7 +5,7 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 html {
-  font-family: 'proxima_nova','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-family: 'Montserrat', sans-serif;
   -webkit-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
 }
@@ -1083,10 +1083,11 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: 'proxima_nova','Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-family: 'Muli', sans-serif;
+  font-weight: lighter;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #f5f5f5;
+  color: #e5e5e5;
   background-color: #121314;
 }
 input,
@@ -1128,8 +1129,6 @@ img {
 }
 .img-rounded {
   border-radius: 100px;
-  width: 125px;
-  height: 125px;
 }
 .img-thumbnail {
   display: inline-block;
@@ -2278,7 +2277,7 @@ th {
   padding: 8px;
   line-height: 1.42857143;
   vertical-align: top;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid #323232;
 }
 .table > thead > tr > th {
   vertical-align: bottom;
@@ -2322,10 +2321,11 @@ th {
   border-bottom-width: 2px;
 }
 .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #f9f9f9;
+  background-color: #0c0c0c;
 }
 .table-hover > tbody > tr:hover {
   background-color: #333333;
+  cursor: pointer;
 }
 table col[class*="col-"] {
   position: static;
@@ -3178,7 +3178,7 @@ fieldset[disabled] .btn-primary.focus {
 }
 .btn-success {
   color: #fff;
-  background-color: #5cb85c;
+  background-color: #23CF5F;
   border-color: #4cae4c;
 }
 .btn-success:focus,
@@ -3226,11 +3226,11 @@ fieldset[disabled] .btn-success:focus,
 .btn-success.disabled.focus,
 .btn-success[disabled].focus,
 fieldset[disabled] .btn-success.focus {
-  background-color: #5cb85c;
+  background-color: #23CF5F;
   border-color: #4cae4c;
 }
 .btn-success .badge {
-  color: #5cb85c;
+  color: ##23CF5F;
   background-color: #fff;
 }
 .btn-info {
@@ -4281,8 +4281,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   float: left;
   height: 50px;
   padding: 15px 15px;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 20px;
+  margin-left: 25px;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
@@ -4499,26 +4500,29 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: #23CF5F;
+  border-color: #23CF5F;
 }
 .navbar-default .navbar-brand {
-  color: #777;
+  color: black;
+  font-weight: bold;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #5e5e5e;
+  color: black;
   background-color: transparent;
 }
 .navbar-default .navbar-text {
   color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #777;
+  color: #e5e5e5;
+  text-shadow: 2px 2px 5px black;
+  font-size: 16px;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #333;
+  color: white;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
@@ -4566,7 +4570,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555;
-    background-color: #e7e7e7;
+    background-color: #23CF5F;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -4966,7 +4970,7 @@ a.badge:focus {
   padding-bottom: 30px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #eee;
+  background-color: #191919;
 }
 .jumbotron h1,
 .jumbotron .h1 {

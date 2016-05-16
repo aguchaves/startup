@@ -10,44 +10,55 @@
     <div class="col-xs-12 col-lg-9">
 
       <div class="playlistData">
+        <div class="playL">
+          <p>PLAYLIST</p>
+        </div>
+        <div class="currentPL">
+          <p>{{ currentPlaylist.name }}</p>
+        </div>
+        <div class="lenght">
+          <p>{{ currentPlaylist.tracks.length }} songs</p>
+        </div>
+        <div class="addTracks">
+          <h3>Add tracks:</h3>
+        </div>
 
-        <h1><i class="fa fa-music" aria-hidden="true"></i>  {{ currentPlaylist.name }}</h1>
-        <h3>Add tracks:</h3>
-        <input class="" type="text" placeholder="Search..."
+        <input class="query" type="text" placeholder="Search..."
                 ng-model="query" ng-change="searchQuery()"/>
 
         <div class="trackSearch">
-            <ul>
-              <li ng-repeat="track in search"
+            <table class="table table-striped table-hover">
+              <tr ng-repeat="track in search"
                   ng-click="addSelectedTrack(track)">
-                 {{ track.name }} - {{ track.artists[0].name }}</li>
-            </ul>
+                <td>
+                  {{ track.name }} - {{ track.artists[0].name }}
+                </td>
+              </tr>
+            </table>
         </div>
-
       </div>
     </div>
-
 </div>
 <div class="row">
   <div class="col-lg-12 col-xs-12">
     <div class="playlistTracks">
-        <table class="table table-hover">
+        <table class="table">
             <thead>
               <tr>
-                <th>
-                  CANCIÓN
+                <th class="songPL">
+                  SONG
                 </th>
                 <th class="artistPL">
-                  ARTISTA
+                  ARTIST
                 </th>
                 <th class="albumPL">
-                  ÁLBUM
+                  ALBUM
                 </th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat= "track in currentPlaylist.tracks">
-                <td>
+                <td class="songPL">
                   {{ track.name }}
                 </td>
                 <td class="artistPL">
