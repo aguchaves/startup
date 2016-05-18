@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-xs-12 col-lg-6 newPLName">
+    <h4>Choose a name for your playlist: </h4>
+    <div class="">
+        <input class="query" type="text" ng-model="newPLName" name="newPLName" value="" placeholder="My Playlist Name..">
+    </div>
+    <div class="addTracks">
+      <h5>Add tracks:</h5>
+      <input class="query" type="text" placeholder="Search..."
+              ng-model="query" ng-change="searchQuery()"/>
+    </div>
+    <div class="trackSearch">
+      <table class="table table-striped table-hover">
+        <tr ng-repeat="track in search"
+            ng-click="addSelectedTrack(track)">
+          <td>
+            {{ track.name }} - {{ track.artists[0].name }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="col-xs-12 col-lg-6 currentPL newPLName">
+    <p>{{ newPLName }}</p>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-lg-12 col-xs-12">
+    <div class="playlistTracks">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>
+                  SONG
+                </th>
+                <th class="artistPL">
+                  ARTIST
+                </th>
+                <th class="albumPL">
+                  ÁLBUM
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat= "track in currentPlaylist.tracks">
+                <td>
+                  {{ track.name }}
+                </td>
+                <td class="artistPL">
+                  {{ track.artists[0].name }}
+                </td>
+                <td class="albumPL">
+                  {{ track.album.name }}
+                </td>
+              </tr>
+            </tbody>
+        </table>
+        <div class="saveButton">
+          <button type="button" name="newPlaylist" class="btn btn-success"
+           ng-click="saveNewPlaylist()">  Save! <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+        </div>
+    </div>
+  </div>
+</div>

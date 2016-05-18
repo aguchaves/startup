@@ -1,0 +1,44 @@
+<div class="usrData">
+  <div class="row">
+    <div class="col-xs-12 col-lg-3">
+      <div class="usrPic">
+        <img ng-src= "{{UserInfo.images[0].url}}" class="usrImg" alt="User Profile Pic"></img><br>
+      </div>
+    </div>
+    <div class="col-xs-12 col-lg-6">
+      <h1> Hello, {{UserInfo.display_name}}!</h1>
+      <p> <i class="fa fa-envelope" aria-hidden="true"></i> {{ UserInfo.email}}</p>
+      <p><i class="fa fa-users" aria-hidden="true"></i> Followers: {{UserInfo.followers.total}}</p>
+    </div>
+      <div class="newPL col-xs-12 col-lg-3">
+          <button type="button" class="btn btn-success" name="newplaylist" ng-click="newplaylist()"><i class="fa fa-plus" aria-hidden="true"></i> New Playlist</button>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="userPlaylist col-lg-12 col-xs-12">
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th class="plName">
+                  PLAYLIST
+                </th>
+                <th class="editPL">
+                  EDIT
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat= "playlist in userPlaylist">
+                <td class="plName">
+                  {{ playlist.name }}
+                </td>
+                <td class="editPL">
+                  <button class="btn btn-success" type="button" name="button"
+                  ng-click="enterPlaylist(playlist)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                </td>
+              </tr>
+            </tbody>
+        </table>
+  </div>
+</div>
