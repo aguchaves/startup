@@ -17,10 +17,8 @@ angular.module('bootcampApp')
 
       spotifyFactory.getUserInfo().then(function(data){
         $scope.UserInfo = data;
-        console.log($scope.currentPlaylist);
         spotifyFactory.getPlaylistTracks($scope.UserInfo.id,
           $scope.currentPlaylist.id).then(function(result){
-            console.log(result.items);
             result.items.forEach(function(track){
             $scope.currentPlaylist.tracks.push(track.track);
             });
@@ -28,7 +26,6 @@ angular.module('bootcampApp')
           });
       }, function(error){
       });
-      console.log($scope.playlistsTracks);
 
       $scope.search = [];
       $scope.query = "";
@@ -47,7 +44,6 @@ angular.module('bootcampApp')
       };
 
       $scope.addSelectedTrack = function (track) {
-        console.log($scope.currentPlaylist);
         spotifyFactory.addTrackInCurrentPlaylist(track);
         $scope.currentPlaylist = spotifyFactory.getCurrentPlaylist();
       };

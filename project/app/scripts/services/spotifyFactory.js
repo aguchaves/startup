@@ -21,6 +21,8 @@ bootcampApp
           authToken : null
       }
 
+//-------------------CLIENT CONFIG
+
        this.setClientId = function (clientId) {
         this.clientId = clientId;
         return this.clientId;
@@ -30,34 +32,8 @@ bootcampApp
         return this.clientId;
       };
 
-      this.setAuthToken = function (authToken) {
-        this.authToken = authToken;
-        store.set('authToken', authToken);
-        return this.authToken;
-      };
-
-      this.getAuthToken = function () {
-        if(store.get('authToken')){
-          this.authToken = store.get('authToken');
-          return this.authToken;
-        }
-      };
-
-      this.setRedirectUri = function (redirectUri) {
-        this.redirectUri = redirectUri;
-        return this.redirectUri;
-      };
-
-      this.getRedirectUri = function () {
-        return this.redirectUri;
-      };
-
-      this.setScope = function (scope) {
-        this.scope = scope;
-        return this.scope;
-      };
-
-      this.spotyURL = 'https://api.spotify.com/v1';
+//-------------------------------API
+//...............................config
 
       this.spoty = function (endURL, method, parameters, data, headers){
 
@@ -78,15 +54,47 @@ bootcampApp
           return promi.promise;
       };
 
-      this.spotyAuth = function(isJson){
-          var auth = {
-              'Authorization' : 'Bearer ' + this.getAuthToken()
-          };
-          if (isJson){
-              auth['Content-Type'] = 'application/json';
-          }
-          return auth;
+      this.spotyURL = 'https://api.spotify.com/v1';
+
+//...............................Authorization
+
+      this.setAuthToken = function (authToken) {
+        this.authToken = authToken;
+        store.set('authToken', authToken);
+        return this.authToken;
       };
+
+      this.getAuthToken = function () {
+        if(store.get('authToken')){
+          this.authToken = store.get('authToken');
+          return this.authToken;
+        }
+      };
+
+      this.spotyAuth = function(isJson){
+                var auth = {
+                    'Authorization' : 'Bearer ' + this.getAuthToken()
+                };
+                if (isJson){
+                    auth['Content-Type'] = 'application/json';
+                }
+                return auth;
+            };
+
+//...........................Redirect Uri
+
+      this.setRedirectUri = function (redirectUri) {
+        this.redirectUri = redirectUri;
+        return this.redirectUri;
+      };
+
+      this.getRedirectUri = function () {
+        return this.redirectUri;
+      };
+
+//-----------------------PLAYLISTS---------------------------
+
+//.......................GENERAL
 
       this.getUserPlaylists = function (userId) {
             return this.spoty('/users/' + userId + '/playlists', 'GET', null, null, this.spotyAuth());
@@ -95,6 +103,29 @@ bootcampApp
       this.getPlaylist = function (userId, playlistId) {
             return this.spoty('/users/' + userId + '/playlists/' + playlistId, 'GET', null, null, this.spotyAuth());
           };
+
+      this.createNewPlaylist= function (userId, options) {
+                return this.spoty('/users/' + userId + '/playlists', 'POST', null, options, this.spotyAuth(true));
+          };
+
+      this.savePlaylist = function(userId, playlistId, tracks){
+              var tracksToBeSaved = [];
+              tracks.forEach(function(track){
+                  tracksToBeSaved.push(track);
+              }, tracksToBeSaved);
+              if(tracksToBeSaved){
+                  tracksToBeSaved.forEach(function(track, index){
+                    tracksToBeSaved[index] = 'spotify:track:' + track.id;
+                  });
+              }
+
+          return this.spoty('/users/' + userId + '/playlists/'+ playlistId + '/tracks', 'PUT', {
+            uris: tracksToBeSaved.toString(),
+            position: null
+          }, null, this.spotyAuth(true));
+        };
+
+//............................TRACKS
 
       this.getPlaylistTracks = function (userId, playlistId) {
             return this.spoty('/users/' + userId + '/playlists/' + playlistId + '/tracks', 'GET', null, null, this.spotyAuth());
@@ -110,14 +141,7 @@ bootcampApp
               tracks.toString(), null, this.spotyAuth(true));
       };
 
-      this.getUserInfo = function () {
-            return this.spoty('/me', 'GET', null, null, this.spotyAuth());
-      };
-
-      this.setUserData = function (data) {
-        this.userData = data;
-        store.set('userData', data)
-      };
+//........................CURRENT
 
       this.setCurrentPlaylist = function(playlist){
             store.set('playList', playlist);
@@ -133,26 +157,18 @@ bootcampApp
           this.getCurrentPlaylist().tracks.push(track);
       };
 
-      this.createNewPlaylist= function (userId, options) {
-            return this.spoty('/users/' + userId + '/playlists', 'POST', null, options, this.spotyAuth(true));
+//-----------------------USER-----------------------------
+
+      this.getUserInfo = function () {
+            return this.spoty('/me', 'GET', null, null, this.spotyAuth());
       };
 
-      this.savePlaylist = function(userId, playlistId, tracks){
-          var tracksToBeSaved = [];
-          tracks.forEach(function(track){
-              tracksToBeSaved.push(track);
-          }, tracksToBeSaved);
-          if(tracksToBeSaved){
-              tracksToBeSaved.forEach(function(track, index){
-                tracksToBeSaved[index] = 'spotify:track:' + track.id;
-              });
-          }
+      this.setUserData = function (data) {
+        this.userData = data;
+        store.set('userData', data)
+      };
 
-      return this.spoty('/users/' + userId + '/playlists/'+ playlistId + '/tracks', 'PUT', {
-        uris: tracksToBeSaved.toString(),
-        position: null
-      }, null, this.spotyAuth(true));
-    }
+//----------------------SEARCH
 
       this.searchQuery = function(query, type){
           var options = { limit: 7 };

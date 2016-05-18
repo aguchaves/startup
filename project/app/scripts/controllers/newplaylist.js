@@ -26,7 +26,6 @@ angular.module('bootcampApp')
                     }, function(error){
 
                     });
-                      console.log(data);
                     },function(error){
 
                     });
@@ -35,7 +34,7 @@ angular.module('bootcampApp')
                   });
                   $scope.search = [];
                 };
-                
+
                 $scope.search = [];
                 $scope.query = "";
                 $scope.searchQuery = function () {
@@ -53,7 +52,6 @@ angular.module('bootcampApp')
                 };
 
                 $scope.addSelectedTrack = function (track) {
-                  console.log($scope.currentPlaylist);
                   spotifyFactory.addTrackInCurrentPlaylist(track);
                   $scope.currentPlaylist = spotifyFactory.getCurrentPlaylist();
                 };
